@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;                    
+using System.Linq;               
 
 namespace TypeLite.Net4 {
     /// <summary>
@@ -15,6 +13,26 @@ namespace TypeLite.Net4 {
         public static TypeScriptFluent ForLoadedAssemblies(this TypeScriptFluent ts) {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
                 ts.ModelBuilder.Add(assembly);
+            }
+
+            return ts;
+        }
+
+        /// <summary>
+        /// Adds all Types derived from T
+        /// </summary>
+        /// <returns>Instance of the TypeScriptFluent that enables fluent configuration.</returns>
+        public static TypeScriptFluent TypesDervivedFrom<T>(this TypeScriptFluent ts, bool includeBaseType = true)
+        {
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                foreach (var type in assembly.GetTypes().Where(x => typeof (T).IsAssignableFrom(x)))
+                {
+                    if (includeBaseType || type != typeof (T))
+                    {
+                        ts.ModelBuilder.Add(type);
+                    }          
+                }
             }
 
             return ts;
