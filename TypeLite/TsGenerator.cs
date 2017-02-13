@@ -236,6 +236,18 @@ namespace TypeLite {
                 (enums.Count == 0 && classes.Count == 0)) {
                 return;
             }
+            
+            if(generatorOutput == TsGeneratorOutput.Properties 
+                && !classes.Any(c => c.Fields.Any() || c.Properties.Any())
+            {
+                return;
+            }
+            
+            if(generatorOutput == TsGeneratorOutput.Constants 
+                && !classes.Any(c => c.Constants.Any())
+            {
+                return;
+            }
 
             var moduleName = GetModuleName(module);
             var generateModuleHeader = moduleName != string.Empty;
