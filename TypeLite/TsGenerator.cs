@@ -237,6 +237,14 @@ namespace TypeLite {
                 return;
             }
 
+            if (generatorOutput == TsGeneratorOutput.Properties && !classes.Any(c => c.Fields.Any() || c.Properties.Any())) {
+                return;
+            }
+
+            if (generatorOutput == TsGeneratorOutput.Constants && !classes.Any(c => c.Constants.Any())) {
+                return;
+            }
+
             var moduleName = GetModuleName(module);
             var generateModuleHeader = moduleName != string.Empty;
 
@@ -369,7 +377,7 @@ namespace TypeLite {
                     }
 
                     _docAppender.AppendConstantModuleDoc(sb, property, this.GetPropertyName(property), this.GetPropertyType(property));
-                    sb.AppendFormatIndented("export var {0}: {1} = {2};", this.GetPropertyName(property), this.GetPropertyType(property), this.GetPropertyConstantValue(property));
+                    sb.AppendFormatIndented("export const {0}: {1} = {2};", this.GetPropertyName(property), this.GetPropertyType(property), this.GetPropertyConstantValue(property));
                     sb.AppendLine();
                 }
 
