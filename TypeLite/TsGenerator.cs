@@ -236,16 +236,12 @@ namespace TypeLite {
                 (enums.Count == 0 && classes.Count == 0)) {
                 return;
             }
-            
-            if(generatorOutput == TsGeneratorOutput.Properties 
-                && !classes.Any(c => c.Fields.Any() || c.Properties.Any())
-            {
+
+            if (generatorOutput == TsGeneratorOutput.Properties && !classes.Any(c => c.Fields.Any() || c.Properties.Any())) {
                 return;
             }
-            
-            if(generatorOutput == TsGeneratorOutput.Constants 
-                && !classes.Any(c => c.Constants.Any())
-            {
+
+            if (generatorOutput == TsGeneratorOutput.Constants && !classes.Any(c => c.Constants.Any())) {
                 return;
             }
 
