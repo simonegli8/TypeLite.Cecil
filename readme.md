@@ -21,6 +21,10 @@ The library is distributed under MIT license.
 
 ## Changelog
 
+
+### Version 1.8.4       (2. 3. 2017)
+Fixed       #128 nested inner classes has incorrect module name
+
 ### Version 1.8.3       (2. 3. 2017)
 Fixed       Nested IEnumerables caused infinite loop
 Fixed       Use namespace instead of deprecated module keyword
