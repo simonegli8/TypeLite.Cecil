@@ -104,7 +104,15 @@ namespace TypeLite.Tests.TsModels {
             Assert.Equal(typeof(TypeLite.Tests.TestModels.Outer.Inner).Namespace + ".Outer", target.Module.Name);
         }
 
-		[Fact]
+        [Fact]
+        public void WhenInitializedWithSecondLevelInnerClass_ModuleIsSetToNamespaceAndAllOuterClasses() {
+            var target = new TsClass(typeof(TypeLite.Tests.TestModels.Outer.Inner.SecondLevelInner));
+
+            Assert.NotNull(target.Module);
+            Assert.Equal(typeof(TypeLite.Tests.TestModels.Outer.Inner).Namespace + ".Outer.Inner", target.Module.Name);
+        }
+
+        [Fact]
 		public void WhenInitializedAndClassHasCustomModuleInAttribute_CustomModuleIsUsed() {
 			var target = new TsClass(typeof(CustomClassName));
 
