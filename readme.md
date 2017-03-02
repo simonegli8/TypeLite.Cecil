@@ -21,6 +21,10 @@ The library is distributed under MIT license.
 
 ## Changelog
 
+### Version 1.8.2       (13. 2. 2017)
+Fixed       Do not generate empt modules
+Fixed       Export constants with const keyword
+
 ### Version 1.8.1       (7. 4. 2016)
 Added       Added ForReferencedAssembly extension method
 
