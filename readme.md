@@ -21,6 +21,10 @@ The library is distributed under MIT license.
 
 ## Changelog
 
+### Version 1.8.3       (2. 3. 2017)
+Fixed       Nested IEnumerables caused infinite loop
+Fixed       Use namespace instead of deprecated module keyword
+
 ### Version 1.8.2       (13. 2. 2017)
 Fixed       Do not generate empt modules
 Fixed       Export constants with const keyword
