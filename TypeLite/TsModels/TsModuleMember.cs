@@ -40,10 +40,13 @@ namespace TypeLite.TsModels {
         protected TsModuleMember(Type type)
             : base(type) {
 
-            var moduleName = this.Type.Namespace;
-            if (type.DeclaringType != null) {
-                moduleName += "." + type.DeclaringType.Name;
+            var moduleName = string.Empty;
+            var declaringType = type.DeclaringType;
+            while (declaringType != null) {
+                moduleName = "." + declaringType.Name + moduleName;
+                declaringType = declaringType.DeclaringType;
             }
+            moduleName = type.Namespace + moduleName;
 
             this.Module = new TsModule(moduleName);
             this.Name = this.Type.Name;
