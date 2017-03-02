@@ -172,7 +172,11 @@ namespace TypeLite {
                                 collectionItemType = null;
                                 break;
                             case TsTypeFamily.Collection:
+                                var previousCollectionItemType = collectionItemType;
                                 collectionItemType = TsType.GetEnumerableType(collectionItemType);
+                                if (collectionItemType == previousCollectionItemType) {
+                                    collectionItemType = null;
+                                }
                                 break;
                             default:
                                 collectionItemType = null;

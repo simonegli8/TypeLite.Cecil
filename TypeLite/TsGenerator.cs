@@ -254,7 +254,7 @@ namespace TypeLite {
                     sb.Append("declare ");
                 }
 
-                sb.AppendLine(string.Format("module {0} {{", moduleName));
+                sb.AppendLine(string.Format("namespace {0} {{", moduleName));
             }
 
             using (sb.IncreaseIndentation()) {
@@ -368,7 +368,7 @@ namespace TypeLite {
             }
 
             string typeName = this.GetTypeName(classModel);
-            sb.AppendLineIndented(string.Format("export module {0} {{", typeName));
+            sb.AppendLineIndented(string.Format("export namespace {0} {{", typeName));
 
             using (sb.IncreaseIndentation()) {
                 foreach (var property in classModel.Constants) {
