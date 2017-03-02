@@ -67,6 +67,9 @@ namespace TypeLite {
         /// </summary>
         /// <param name="property"></param>
         public override void VisitProperty(TsProperty property) {
+            if (property.IsIgnored) {
+                return;
+            }
             property.PropertyType = this.ResolveType(property.PropertyType);
             if (property.GenericArguments != null) {
                 for (int i = 0; i < property.GenericArguments.Count; i++) {

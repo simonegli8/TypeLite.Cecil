@@ -32,7 +32,9 @@ namespace TypeLite.TsModels {
 			: base(type) {
 
 			var enumerableType = TsType.GetEnumerableType(this.Type);
-			if (enumerableType != null) {
+			if (enumerableType == this.Type) {
+				this.ItemsType = TsType.Any;
+			} else if (enumerableType != null) {
 				this.ItemsType = TsType.Create(enumerableType);
 			} else if (typeof(IEnumerable).IsAssignableFrom(this.Type)) {
 				this.ItemsType = TsType.Any;
@@ -53,6 +55,9 @@ namespace TypeLite.TsModels {
 			}
 			else if (t != typeof(string) && (enumerableUnderlying = GetEnumerableType(t)) != null)
 			{
+				if (enumerableUnderlying == t) {
+					return 0;
+				}
 				return GetCollectionDimension(enumerableUnderlying) + 1;
 			}
 			else

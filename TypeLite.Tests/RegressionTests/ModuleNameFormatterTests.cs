@@ -19,7 +19,7 @@ namespace TypeLite.Tests.RegressionTests
             var result = generator.Generate(model);
 
             var expectedOutput = @"
-declare module custom {
+declare namespace custom {
 	interface Drink {
 	}
 }
@@ -41,13 +41,13 @@ declare module custom {
             var result = generator.Generate(model);
 
             var expectedOutput = @"
-declare module custom {
+declare namespace custom {
 	interface Person {
 		AllDrinks: custom.Drink[];
 		WhiteRussian: custom.Drink;
 	}
 }
-declare module custom {
+declare namespace custom {
 	interface Drink {
 	}
 }
